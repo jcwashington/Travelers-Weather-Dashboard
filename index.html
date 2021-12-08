@@ -21,16 +21,18 @@
                 <aside class="search-col col-lg-3">
                     <h2>Search for a city: </h2>
                     <form id="search-input" class="form-group">
-                        <input type="text" class="form-control" placeholder="ex. 'Atlanta'">
+                        <input id='city-search' type="text" class="form-control" placeholder="ex. 'Atlanta'">
                     </form>
                     <button id="submit-btn" class="btn" type="submit">Search</button>
                     <hr/>
-                    <div class="historical-list">
+                    <div class="list-group" id="historical-list">
                         <!-- <button class="historical-btn btn">Sample Btn</button> -->
                     </div>
                 </aside>
                 <div class="weather-info col-lg-9 pb-3">
-                    <section id="forecast-today" class="mt-3">akflbvla</section>
+                    <section id="forecast-today" class="mt-3">
+                        <!-- This is where today will be -->
+                    </section>
                     <hr/>
                     <section id="forecast-5day" class="mt-3"></section>
                 </div>
@@ -40,7 +42,7 @@
         </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="assets/script.js"></script>
+    <script src="assets/js/script.js"></script>
     </body>
 </html>
 

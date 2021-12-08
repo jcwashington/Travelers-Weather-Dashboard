@@ -47,7 +47,8 @@ hr {
     background-color: var(--oxford-blue);
     border-top: 2px solid rgba(0,0,0,.1);
 }
-.historical-list {
+#historical-list {
+    border-radius: 0.3rem;
     margin: 1rem;
     background-color: var(--blue-sapphire);
 }
