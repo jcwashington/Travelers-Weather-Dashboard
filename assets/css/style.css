@@ -6,6 +6,7 @@
     --old-lace: #fff9eb;
     --papaya-whip: #fff1d0ff;
     --maximum-red: #dd1c1aff;
+    --green: #006400;
 }
 
 *,
@@ -23,6 +24,9 @@ padding: 0;
 font-family: 'Poppins', sans-serif;
 background-color: var(--old-lace);
 color: var(--oxford-blue);
+}
+.hidden {
+    display: none;
 }
 .dashboard-header {
     background: linear-gradient(45deg, var(--cerulean-crayola), var(--blue-sapphire));
@@ -66,6 +70,35 @@ hr {
 #forecast-today {
     background: linear-gradient(45deg, var(--old-lace), var(--blue-sapphire));
 }
-#forecast-5day {
+#forecast-5day {;
+    max-width: 100%;
+}
+.forecastsCards {
+    flex: 1 0 18%;
+    display: flex;
+    justify-content: center;
+    margin: 0 2px 0 2px;
+}
+.weatherCard {
+    background-color: var(--oxford-blue);
+    border-radius: 0.3rem;
+    color: var(--old-lace);
+    border-radius: 0.3rem;
+}
+.uvi-btn{
+    background-color: transparent;
+    border-radius: 4px;
+    color: var(--old-lace);
+    opacity: 0.75;
+}
+.uviFavorable {
+    background-color: var(--green);
+}
+.uviModerate {
+    background-color: var(--jonquil);
+    color: var(--oxford-blue);
 
+}
+.uviSevere {
+    background-color: var(--maximum-red);
 }

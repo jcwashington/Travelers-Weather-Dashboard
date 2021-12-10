@@ -6,15 +6,6 @@ var city;
 var cities = [];
 
 $( document ).ready(function() {
-    // current date
-    var currentDate = moment().format('l');
-    // dates for the next 5 days
-    let day1 = moment().add(1, 'days').format('l');
-    let day2 = moment().add(2, 'days').format('l');
-    let day3 = moment().add(3, 'days').format('l');
-    let day4 = moment().add(4, 'days').format('l');
-    let day5 = moment().add(5, 'days').format('l');
-
     // Begin by taking care of the historical searches list
     //
     // Ability to save searches
@@ -94,6 +85,7 @@ $( document ).ready(function() {
     // Render the forecast cards
     function renderWeatherItems(cityName, weather) {
         renderCurrentForecast(cityName, weather.current);
+        renderFutureForecast(weather.daily);
     }
 
     function renderCurrentForecast(cityName, weather) {
@@ -105,24 +97,64 @@ $( document ).ready(function() {
         var uvi = weather.uvi;
         var currentHumidity = weather.humidity;
         var today = moment.unix(weather.dt).format('l');
-        console.log(cityName, today);
+        var uviBtn = '';
+
+
+        // check for UVI
+        if (uvi < 3) {
+            var uviBtn = 'uvi-btn uviFavorable disabled';
+          } else if (uvi < 7) {
+            var uviBtn = 'uvi-btn uviFModerate disabled';
+          } else {
+            var uviBtn = 'uvi-btn uviSevere disabled';
+          }
 
         var currentForecast = [`<h2 id ="city-name">${cityName} (${today}) <img src=${weatherIcon} alt='${iconAlt}'></h2>`,
                                 `<h4 id="currentTempF">Current Temp (F): ${currentTempF}</h4>`,
                                 `<h4 id="currentHumidity">Current Humidity: ${currentHumidity}%</h4>`,
                                 `<h4 id="windSpeedMph">Wind Speed (mph): ${windSpeedMph}</h4>`,
-                                `<h4 id="uvi">UV Index: ${uvi}</h4>`
+                                `<h4 id="uvi" class="${uviBtn}">UV Index: ${uvi}</h4>`
                             ];
+
 
         for (var i=0; i<currentForecast.length; i++) {
             $(currentForecast[i]).appendTo("#forecast-today");
         }
-
-
-
     }
 
+    function renderFutureForecast(fiveDayForecast) {
+        console.log("top of renderFutureForecast")
+        var day1 = moment().add(1, "days").startOf('day').unix();
+        var day6 = moment().add(6, "days").startOf('day').unix();
 
+        $( "#divider" ).removeClass( "hidden" );
+
+        for (var i=0; i<fiveDayForecast.length; i++) {
+            if (fiveDayForecast[i].dt >= day1 && fiveDayForecast[i].dt < day6) {
+                console.log(fiveDayForecast[i]);
+                buildForecastCard(fiveDayForecast[i]);
+              };
+        };
+    }
+
+    function buildForecastCard(fiveDayForecast) {
+        var dayDate = moment.unix(fiveDayForecast.dt).format('l');
+        var icon = `https://openweathermap.org/img/w/${fiveDayForecast.weather[0].icon}.png`;
+        var alt = fiveDayForecast.weather[0].description;
+        var humidity = fiveDayForecast.humidity;
+        var wind = fiveDayForecast.wind_speed;
+        var temp = fiveDayForecast.temp.day;
+
+        console.log(humidity);
+        var cardName = `forecastCard-${fiveDayForecast.dt}`; // each card has a unique name
+
+        $(`<div id= ${cardName} class="weatherCard m-1"> </div>`).appendTo(".forecastsCards"); 
+        $(`<h5 id="forecastDate" class="text-center"> ${dayDate} </h5>`).appendTo(`#${cardName}`);
+        $(`<img id= "icon" src=${icon} alt=${alt}>`).appendTo(`#${cardName}`);
+        $(`<p id="forecastTemp"> Temp (F): ${temp} </p>`).appendTo(`#${cardName}`);
+        $(`<p id="windMph"> Wind (mph): ${wind} </p>`).appendTo(`#${cardName}`);
+        $(`<p id="humidity"> Humidity: ${humidity}% </p>`).appendTo(`#${cardName}`);
+    }
 
 
 })
