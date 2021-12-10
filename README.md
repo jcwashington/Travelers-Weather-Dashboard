@@ -4,11 +4,9 @@ As a traveler, knowing the weather of my destination is important to planning an
 
 ### About
 
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. The challenge here is to build a weather dashboard that will:
-- Run in the browser and feature dynamically updated HTML and CSS.
-- F*eature dynamically updated HTML and CSS powered by jQuery
+Developers are often tasked with retrieving data from another application's API and using it in the context of their own. The challenge here is to build a weather dashboard that will eature dynamically updated HTML and CSS powered by jQuery
 
-View my finished application here: (placeholder for github page url)
+View my finished application here: https://jcwashington.github.io/Travelers-Weather-Dashboard/
 
 
 ## User Story
@@ -36,12 +34,12 @@ View my finished application here: (placeholder for github page url)
 ### Site Mock-ups:
 
 
-![Screenshot of load page](placeholder for site gif/visuals)
+![page loads the current weather and next 5 days for a city the user enters](weather-dashboard.gif)
 
 
 ###  Functionality Contributions
 
-- Weather information is provided by the OpenWeather [OpenWeatherMap API](https://openweathermap.org/). [Documentation](https://openweathermap.org/api) can be found here.
+- Weather information is provided by [OpenWeatherMap API](https://openweathermap.org/). [Documentation](https://openweathermap.org/api) can be found here.
 - HTML and HTML semantic tags
 - Bootstrap as as a CSS framework
   - minimises the need for media queries.
